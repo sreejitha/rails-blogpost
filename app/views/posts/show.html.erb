@@ -15,7 +15,7 @@
   		  	</p>
   		  	<p class="level-item">
             <!-- TODO: Add rails functionality -->
-  				<a class="button is-danger"> Delete</a>
+  				<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger" %>
   				</p>
   		  </div>
   		</nav>
@@ -28,4 +28,13 @@
   </section>
 
   <section class="section comments">
-  </section>
+	<div class="container">
+		<h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
+		<%= render @post.comments %>
+		<div class="comment-form">
+			<hr />
+			<h3 class="subtitle is-3">Leave a reply</h3>
+	 		<%= render 'comments/form' %>
+		</div>
+	</div>
+</section>
